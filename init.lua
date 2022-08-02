@@ -1,8 +1,8 @@
 for _, name in ipairs({
-    'mappings/colemak',
+    'mappings.colemak',
     'reload',
     'general',
     'plugins',
-    'mappings/general',
+    'mappings.general',
     'theme',
 }) do require('config.' .. name) end
