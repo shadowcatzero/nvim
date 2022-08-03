@@ -3,12 +3,12 @@ local u = require 'config.utils'.load
 local g
 vim.api.nvim_create_augroup('reload', {})
 
--- reload these files when written to
-
 --- @param arg {file: string}
 local reload_file = function(arg)
     u.reload(u.path_for(arg.file))
 end
+
+-- reload these files when written to
 
 for _, path in ipairs({
     'reload.lua',
@@ -18,10 +18,6 @@ for _, path in ipairs({
     'theme.lua',
 }) do u.post_write(g, path, reload_file) end
 
--- allows you to install / clean / update plugins
--- after writing to the file
-
----
 --- @param arg {file: string}
 local update_plugins = function(arg)
     -- unload the file if it's not plugins.lua
@@ -33,6 +29,8 @@ local update_plugins = function(arg)
     u.reload('config.plugins')
     require 'packer'.compile()
 end
+
+-- reload plugin files when written to
 
 u.post_write(g, 'plugins.lua', update_plugins)
 u.post_write(g, 'plugins/*', update_plugins)
