@@ -45,7 +45,7 @@ vim.diagnostic.config({
 
 -- terminal
 u.map('t', '<esc>', '<C-\\><C-n>')
-u.nmap('<space>tm', '<cmd>belowright 7sp<cr>:term<cr>A')
+u.nmap('<space>tm', '<cmd>belowright 7sp<cr><cmd>term<cr><cmd>set nonu<cr>A')
 
 -- off search highlight when escape is pressed
 u.nmap('<esc>', '<cmd>noh<cr><esc>')
