@@ -20,7 +20,7 @@ return function(use)
                 },
             }
 
-            local u = require 'config.utils'
+            local u = require 'config.utils'.mapping
             u.nmap('<space>e', u.cmd('Neotree toggle'))
         end
     }

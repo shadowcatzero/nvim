@@ -1,5 +1,5 @@
 local config = function()
-    local u = require 'config.utils'
+    local u = require 'config.utils'.mapping
 
     u.nmap('E', vim.diagnostic.open_float)
     u.nmap('[d', vim.diagnostic.goto_prev)

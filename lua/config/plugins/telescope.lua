@@ -6,7 +6,7 @@ return function(use)
         config = function()
             require 'telescope'.setup {}
 
-            local u = require 'config.utils'
+            local u = require 'config.utils'.mapping
 
             u.nmap('<space>ff', u.cmd('Telescope find_files'))
             u.nmap('<space>fg', u.cmd('Telescope live_grep'))

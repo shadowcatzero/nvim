@@ -40,11 +40,12 @@ vim.diagnostic.config({
 })
 
 -- terminal
-u.map('t', '<esc>', '<C-\\><C-n>')
-u.nmap('<space>tm', '<cmd>belowright 7sp<cr><cmd>term<cr><cmd>set nonu<cr>A')
+local m = u.mapping
+m.map('t', '<esc>', '<C-\\><C-n>')
+m.nmap('<space>tm', '<cmd>belowright 7sp<cr><cmd>term<cr><cmd>set nonu<cr>A')
 
 -- off search highlight when escape is pressed
-u.nmap('<esc>', '<cmd>noh<cr><esc>')
+m.nmap('<esc>', '<cmd>noh<cr><esc>')
 
 -- colemak
 local l = u.layout

@@ -1,11 +1,13 @@
-local group = vim.api.nvim_create_augroup('reload', {})
+local u = require 'config.utils'.load
 
-local post_write = function(path, fn)
-    vim.api.nvim_create_autocmd('BufWritePost', {
-        group = group,
-        pattern = '**/lua/config/' .. path,
-        callback = fn,
-    })
+local g
+vim.api.nvim_create_augroup('reload', {})
+
+-- reload these files when written to
+
+--- @param arg {file: string}
+local reload_file = function(arg)
+    u.reload(u.path_for(arg.file))
 end
 
 for _, path in ipairs({
@@ -14,7 +16,7 @@ for _, path in ipairs({
     'utils.lua',
     'neovide.lua',
     'theme.lua',
-}) do post_write(path, function(arg) dofile(arg.file) end) end
+}) do u.post_write(g, path, reload_file) end
 
 -- allows you to install / clean / update plugins
 -- after writing to the file
@@ -23,17 +25,14 @@ for _, path in ipairs({
 --- @param arg {file: string}
 local update_plugins = function(arg)
     -- unload the file if it's not plugins.lua
-    local i = arg.file:find("config/plugins/")
-    if i ~= nil then
-        local mod = arg.file:sub(i):gsub("/", "."):sub(0, -5)
-        package.loaded[mod] = nil
+    local mod = u.path_for(arg.file)
+    if mod ~= 'config.plugins' then
+        u.unload(mod)
     end
     -- reload plugins.lua and compile
-    package.loaded['config.plugins'] = nil
-    require 'config.plugins'
+    u.reload('config.plugins')
     require 'packer'.compile()
 end
 
-post_write('plugins.lua', update_plugins)
-post_write('plugins/*', update_plugins)
-
+u.post_write(g, 'plugins.lua', update_plugins)
+u.post_write(g, 'plugins/*', update_plugins)
