@@ -4,6 +4,8 @@ return function(use)
         config = function()
             require 'onedark'.setup { style = 'darker' }
             require 'onedark'.load()
+            package.loaded['config.theme'] = nil
+            require 'config.theme'
         end
     }
     use {
@@ -22,5 +24,9 @@ return function(use)
     use {
         'lewis6991/gitsigns.nvim',
         config = function() require 'gitsigns'.setup() end
+    }
+    use {
+        'sunjon/shade.nvim',
+        config = function() require 'shade'.setup() end
     }
 end

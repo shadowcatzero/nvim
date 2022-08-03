@@ -28,10 +28,6 @@ else
     o.termguicolors = false
 end
 
--- highlight extra white space with red
-vim.api.nvim_set_hl(0, 'TrailingWhitespace', { ctermbg = 'red', bg = '#ff5555' })
-vim.cmd([[match TrailingWhitespace /\s\+$/]])
-
 -- diagnostics
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
