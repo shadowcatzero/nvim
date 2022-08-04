@@ -1,3 +1,5 @@
+-- originally taken from the FAQ
+
 vim.g.gui_font_default_size = 14
 vim.g.gui_font_size = vim.g.gui_font_default_size
 vim.g.gui_font_face = "Comic Code Ligatures"

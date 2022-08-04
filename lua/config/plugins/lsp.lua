@@ -11,7 +11,9 @@ local config = function()
         vim.o.signcolumn = 'yes'
 
         local map = function(from, to)
-            vim.keymap.set('n', from, to, { noremap = true, silent = true, buffer = bufnr })
+            vim.keymap.set('n', from, to,
+                { noremap = true, silent = true, buffer = bufnr }
+            )
         end
 
         map('gd', vim.lsp.buf.definition)
@@ -33,7 +35,9 @@ local config = function()
         map('<space>fm', vim.lsp.buf.formatting)
     end
 
-    local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    local capabilities = require 'cmp_nvim_lsp'.update_capabilities(
+        vim.lsp.protocol.make_client_capabilities()
+    )
 
     require 'lspconfig'.sumneko_lua.setup {
         on_attach = on_attach,
@@ -42,6 +46,12 @@ local config = function()
             Lua = {
                 diagnostics = {
                     globals = { 'vim' },
+                },
+                workspace = {
+                    library = vim.api.nvim_get_runtime_file("", true)
+                },
+                telemetry = {
+                    enable = false,
                 },
             },
         },
@@ -75,7 +85,6 @@ return function(use)
             'mfussenegger/nvim-dap',
         }
     }
-    use 'tjdevries/nlua.nvim'
     use {
         'windwp/nvim-autopairs',
         config = function() require 'nvim-autopairs'.setup {} end

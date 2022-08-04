@@ -16,7 +16,7 @@ return function(use)
                     }
                 },
                 window = {
-                    width = 20,
+                    width = 30,
                 },
             }
 

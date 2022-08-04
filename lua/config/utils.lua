@@ -20,23 +20,31 @@ mapping.layout = layout
 
 -- loading stuff
 local load = {}
+load.lua_path = vim.fn.stdpath('config') .. '/lua/'
+
 load.post_write = function(group, path, fn)
     vim.api.nvim_create_autocmd('BufWritePost', {
         group = group,
-        pattern = '**/lua/config/' .. path,
+        pattern = load.lua_path .. path,
         callback = fn,
     })
+end
+load.mod_post_write = function(group, mod, fn)
+    local set_name = false
+    if mod:sub(-1, -1) == '*' then set_name = true end
+    local path = mod:gsub('[.]', '/') .. '.lua'
+    load.post_write(group, path, function(arg)
+        local m = mod
+        if set_name then
+            local name = arg.file:match('.*/(.*).lua')
+            m = mod:sub(0, -2) .. name
+        end
+        fn(m, arg)
+    end)
 end
 
 load.unload = function(mod) package.loaded[mod] = nil end
 load.reload = function(mod) load.unload(mod) require(mod) end
---- @param path string
-load.path_for = function(path)
-    local i = path:find("lua/config/")
-    if i == nil then return nil end
-    local mod = path:sub(i + 4):gsub("/", "."):sub(0, -5)
-    return mod
-end
 
 return {
     mapping = mapping,
