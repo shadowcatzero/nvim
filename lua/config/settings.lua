@@ -66,3 +66,8 @@ l.swap('<C-w>O', '<C-w>L')
 l.swap('N', 'H')
 l.swap('O', 'L')
 
+l.swap('<C-n>', '<C-w>h')
+l.swap('<C-e>', '<C-w>j')
+l.swap('<C-i>', '<C-w>k')
+l.swap('<C-o>', '<C-w>l')
+

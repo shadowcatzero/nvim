@@ -19,14 +19,24 @@ return function(use)
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-        config = function() require 'lualine'.setup() end
+        config = function()
+            require 'lualine'.setup {}
+            -- refresh bar when cursor moved to update line & col
+            local cb = function()
+                require 'lualine'.refresh {
+                    scope = 'window',
+                    place = { 'statusline' },
+                }
+            end
+            --[[local group = vim.api.nvim_create_augroup('lualine', {})
+            vim.api.nvim_create_autocmd('CursorMoved', {
+                group = group,
+                callback = cb
+            })]]
+        end
     }
     use {
         'lewis6991/gitsigns.nvim',
         config = function() require 'gitsigns'.setup() end
-    }
-    use {
-        'sunjon/shade.nvim',
-        config = function() require 'shade'.setup() end
     }
 end

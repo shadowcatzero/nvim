@@ -26,5 +26,14 @@ return function(use)
         requires = { 'nvim-telescope/telescope.nvim' },
         config = function() require 'telescope'.load_extension('ui-select') end
     }
+    use({
+        'ziontee113/icon-picker.nvim',
+        requires = { 'stevearc/dressing.nvim' },
+        config = function()
+            require('icon-picker').setup {}
+            local u = require 'config.utils'.mapping
+            u.nmap('<space>fi', u.cmd('IconPickerYank alt_font symbols nerd_font emoji'))
+            vim.keymap.set('i', '<c-i>', u.cmd('IconPickerInsert alt_font symbols nerd_font emoji'))
+        end,
+    })
 end
-
