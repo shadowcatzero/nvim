@@ -42,12 +42,23 @@ vim.diagnostic.config({
 -- terminal
 local m = u.mapping
 m.map('t', '<esc>', '<C-\\><C-n>')
-m.nmap('<space>tm', '<cmd>belowright 7sp<cr><cmd>term<cr><cmd>setlocal nonu<cr>A')
+m.map('t', '<C-n>', '<C-\\><C-n><C-w>h')
+m.map('t', '<C-e>', '<C-\\><C-n><C-w>j')
+m.map('t', '<C-i>', '<C-\\><C-n><C-w>k')
+m.map('t', '<C-o>', '<C-\\><C-n><C-w>l')
+m.nmap('<leader>tm', '<cmd>belowright 7sp<cr><cmd>term<cr><cmd>setlocal nonu<cr>A')
 
 -- off search highlight when escape is pressed
 m.nmap('<esc>', '<cmd>noh<cr><esc>')
 
--- colemak
+-- yank to clipboard
+m.map('v', '<leader>y', '"+y')
+
+-- spell checking
+m.cmd('<leader>sp', 'setlocal spell spelllang=en_us')
+m.cmd('<leader>nsp', 'setlocal nospell')
+
+-- colemak-dh
 local l = u.layout
 l.swap('n', 'h')
 l.swap('e', 'j')

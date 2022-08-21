@@ -4,7 +4,9 @@ local opts = { noremap = true, silent = true }
 local mapping = {}
 mapping.map = function(mode, from, to) vim.keymap.set(mode, from, to, opts) end
 mapping.nmap = function(from, to) vim.keymap.set('n', from, to, opts) end
-mapping.cmd = function(content) return '<cmd>' .. content .. '<cr>' end
+mapping.cmd = function(from, content)
+    vim.keymap.set('n', from, '<cmd>' .. content .. '<cr>', opts)
+end
 
 -- layout (mapping)
 local layout = {}
