@@ -33,7 +33,7 @@ return function(use)
             require('icon-picker').setup {}
             local u = require 'config.utils'.mapping
             u.cmd('<leader>fi', 'IconPickerYank alt_font symbols nerd_font emoji')
-            vim.keymap.set('i', '<c-i>', '<cmd>IconPickerInsert alt_font symbols nerd_font emoji<cr>')
+            vim.keymap.set('i', '<c-s>', '<cmd>IconPickerInsert alt_font symbols nerd_font emoji<cr>')
         end,
     })
 end

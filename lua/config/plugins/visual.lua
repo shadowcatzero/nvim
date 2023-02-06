@@ -39,4 +39,24 @@ return function(use)
         'lewis6991/gitsigns.nvim',
         config = function() require 'gitsigns'.setup() end
     }
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = function()
+            require 'nvim-treesitter.install'.update {
+                with_sync = true
+            }
+        end,
+        config = function()
+            require 'nvim-treesitter.configs'.setup {
+                ensure_installed = {"norg"},
+                highlight = { enable = true }
+            }
+        end,
+    }
+    use {
+        'elkowar/yuck.vim'
+    }
+    use {
+        'kmonad/kmonad-vim'
+    }
 end

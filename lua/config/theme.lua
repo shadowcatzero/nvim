@@ -13,4 +13,7 @@ vim.cmd [[match ExtraWhitespace /\s\+$/]]
 gbhl('Normal', 'none')
 gbhl('EndOfBuffer', 'none')
 gbhl('SignColumn', 'none')
+gbhl('NeoTreeNormal', 'none')
+gbhl('NeoTreeNormalNC', 'none')
+gbhl('NeoTreeEndOfBuffer', 'none')
 

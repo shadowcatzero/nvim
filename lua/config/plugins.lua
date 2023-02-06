@@ -14,10 +14,10 @@ packer.startup(function(use)
     -- plugin categories
     require 'config.plugins.telescope'(use)
     require 'config.plugins.tree'(use)
-    require 'config.plugins.syntax'(use)
     require 'config.plugins.cmp'(use)
     require 'config.plugins.lsp'(use)
     require 'config.plugins.visual'(use)
+    require 'config.plugins.util'(use)
 
     -- sync if bootstrapped
     if PACKER_BOOTSTRAP then

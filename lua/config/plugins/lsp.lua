@@ -32,10 +32,12 @@ local config = function()
         map('<leader>D', vim.lsp.buf.type_definition)
         map('<leader>rn', vim.lsp.buf.rename)
         map('<leader>ca', vim.lsp.buf.code_action)
-        map('<leader>fm', vim.lsp.buf.formatting)
+        map('<leader>fm', function()
+            vim.lsp.buf.format { async = true }
+        end)
     end
 
-    local capabilities = require 'cmp_nvim_lsp'.update_capabilities(
+    local capabilities = require 'cmp_nvim_lsp'.default_capabilities(
         vim.lsp.protocol.make_client_capabilities()
     )
 
@@ -48,7 +50,8 @@ local config = function()
                     globals = { 'vim' },
                 },
                 workspace = {
-                    library = vim.api.nvim_get_runtime_file("", true)
+                    library = vim.api.nvim_get_runtime_file("", true),
+                    checkThirdParty = false
                 },
                 telemetry = {
                     enable = false,
@@ -71,6 +74,18 @@ local config = function()
         on_attach = on_attach,
         capabilities = capabilities,
     }
+    require 'lspconfig'.clangd.setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+    }
+    require 'lspconfig'.asm_lsp.setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+    }
+    require 'lspconfig'.pylsp.setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+    }
 end
 
 return function(use)
@@ -88,5 +103,9 @@ return function(use)
     use {
         'windwp/nvim-autopairs',
         config = function() require 'nvim-autopairs'.setup {} end
+    }
+    use {
+        'scalameta/nvim-metals',
+        requires = { "nvim-lua/plenary.nvim" }
     }
 end
