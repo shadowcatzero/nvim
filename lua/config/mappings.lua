@@ -16,6 +16,12 @@ m.nmap('<esc>', '<cmd>noh<cr><esc>')
 m.cmd('<leader>spl', 'setlocal spell spelllang=en_us')
 m.cmd('<leader>spL', 'setlocal nospell')
 
+-- lsp
+m.nmap('E', vim.diagnostic.open_float)
+m.nmap('[d', vim.diagnostic.goto_prev)
+m.nmap(']d', vim.diagnostic.goto_next)
+m.nmap('<leader>q', vim.diagnostic.setloclist)
+
 -- colemak-dh
 local l = u.layout
 l.swap('n', 'h')
