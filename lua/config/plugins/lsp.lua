@@ -3,7 +3,7 @@ local config = function()
     local on_attach = settings.on_attach
     local capabilities = settings.capabilities
 
-    require 'lspconfig'.sumneko_lua.setup {
+    require 'lspconfig'.lua_ls.setup {
         on_attach = on_attach,
         capabilities = capabilities,
         settings = {
