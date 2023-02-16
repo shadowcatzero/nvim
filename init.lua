@@ -3,7 +3,6 @@ for _, name in ipairs({
     "settings",
     "mappings",
     "plugins",
-    "neovide",
     "theme",
     "preview"
 }) do require("config." .. name) end

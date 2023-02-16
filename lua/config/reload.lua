@@ -9,7 +9,6 @@ for _, mod in ipairs({
     "settings",
     "mappings",
     "utils",
-    "neovide",
     "theme",
     "preview",
 }) do u.mod_post_write(g, "config." .. mod, u.reload) end
