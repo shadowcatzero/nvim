@@ -14,5 +14,3 @@ for _, mod in ipairs({
     "preview",
 }) do u.mod_post_write(g, "config." .. mod, u.reload) end
 
--- reload plugin files when written to
-
