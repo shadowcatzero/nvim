@@ -1,5 +1,5 @@
-return function(use)
-    use {
+return {
+    {
         'nvim-neorg/neorg',
         tag = '0.0.12',
         config = function()
@@ -16,16 +16,6 @@ return function(use)
                 }
             }
         end,
-        requires = 'nvim-lua/plenary.nvim'
-    }
-    use({
-        "iamcco/markdown-preview.nvim",
-        run = function() vim.fn["mkdp#util#install"]() end,
-    })
-    vim.cmd([[
-        function! OpenMarkdownPreview (url)
-            execute "silent ! firefox --new-window " . a:url
-        endfunction
-        let g:mkdp_browserfunc = 'OpenMarkdownPreview'
-    ]])
-end
+        dependencies = 'nvim-lua/plenary.nvim'
+    },
+}

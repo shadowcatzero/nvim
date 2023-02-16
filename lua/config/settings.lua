@@ -5,19 +5,19 @@ local g = vim.g
 o.number = true
 o.relativenumber = true
 o.showmode = false
-o.clipboard = 'unnamedplus'
+o.clipboard = "unnamedplus"
 
-g.mapleader = ' '
-vim.cmd('filetype plugin on')
-vim.cmd('syntax on')
+g.mapleader = " "
+vim.cmd("filetype plugin on")
+vim.cmd("syntax on")
 
 -- line break (wrapping) settings
 o.linebreak = true
 o.breakindent = true
-o.showbreak = '\\ '
+o.showbreak = "\\ "
 
 -- lines after end of file empty instead of ~ (fillchars)
-o.fcs = 'eob: '
+o.fcs = "eob: "
 
 -- tab
 o.expandtab = true
@@ -25,7 +25,7 @@ o.softtabstop = 4
 o.shiftwidth = 4
 
 -- turn of gui colors if in tty
-if os.getenv('TERM') ~= 'linux' then
+if os.getenv("TERM") ~= "linux" then
     o.termguicolors = true
 else
     o.termguicolors = false
@@ -39,6 +39,5 @@ for type, icon in pairs(signs) do
 end
 
 vim.diagnostic.config({
-    virtual_text = { prefix = '●' };
+    virtual_text = { prefix = "●" },
 })
-
