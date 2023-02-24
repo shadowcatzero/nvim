@@ -27,7 +27,11 @@ return {
     },
     {
         "lewis6991/gitsigns.nvim",
-        config = function() require("gitsigns").setup() end
+        config = function()
+            require("gitsigns").setup({
+                _signs_staged_enable = true
+            })
+        end
     },
     {
         "nvim-treesitter/nvim-treesitter",
