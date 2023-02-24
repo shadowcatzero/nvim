@@ -10,10 +10,10 @@ hl("ExtraWhitespace", { ctermbg = "red", bg = "#ff8888" })
 vim.cmd [[match ExtraWhitespace /\s\+$/]]
 
 -- make background transparent
-gbhl("Normal", "none")
-gbhl("EndOfBuffer", "none")
-gbhl("SignColumn", "none")
-gbhl("NeoTreeNormal", "none")
-gbhl("NeoTreeNormalNC", "none")
-gbhl("NeoTreeEndOfBuffer", "none")
+-- gbhl("Normal", "none")
+-- gbhl("EndOfBuffer", "none")
+-- gbhl("SignColumn", "none")
+-- gbhl("NeoTreeNormal", "none")
+-- gbhl("NeoTreeNormalNC", "none")
+-- gbhl("NeoTreeEndOfBuffer", "none")
 

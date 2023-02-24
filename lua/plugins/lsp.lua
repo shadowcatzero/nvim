@@ -25,10 +25,10 @@ local config = function()
     vim.g.markdown_fenced_languages = {
         "ts=typescript"
     }
-    require("lspconfig").denols.setup {
-        on_attach = on_attach,
-        capabilities = capabilities,
-    }
+    --require("lspconfig").denols.setup {
+    --    on_attach = on_attach,
+    --    capabilities = capabilities,
+    --}
     require("lspconfig").clangd.setup {
         on_attach = on_attach,
         capabilities = capabilities,
@@ -42,6 +42,14 @@ local config = function()
         capabilities = capabilities,
     }
     require("lspconfig").kotlin_language_server.setup {
+        on_attach = on_attach,
+        capabilities = capabilities
+    }
+    require("lspconfig").angularls.setup {
+        on_attach = on_attach,
+        capabilities = capabilities
+    }
+    require("lspconfig").tsserver.setup {
         on_attach = on_attach,
         capabilities = capabilities
     }
@@ -70,7 +78,7 @@ return {
             "nvim-lua/plenary.nvim",
             "mfussenegger/nvim-dap",
         },
-        rs_config = rs_config
+        config = rs_config
     },
     {
         "windwp/nvim-autopairs",

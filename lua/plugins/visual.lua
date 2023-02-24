@@ -1,9 +1,11 @@
 return {
     {
-        "navarasu/onedark.nvim",
+        "catppuccin/nvim",
         config = function()
-            require("onedark").setup { style = "darker" }
-            require("onedark").load()
+            require("catppuccin").setup({
+                transparent_background = true
+            })
+            vim.cmd.colorscheme("catppuccin-mocha")
             package.loaded["config.theme"] = nil
             require("config.theme")
         end
@@ -36,7 +38,6 @@ return {
         end,
         config = function()
             require("nvim-treesitter.configs").setup {
-                ensure_installed = { "norg" },
                 highlight = { enable = true }
             }
         end,

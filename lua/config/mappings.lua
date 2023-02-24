@@ -22,6 +22,9 @@ m.nmap("[d", vim.diagnostic.goto_prev)
 m.nmap("]d", vim.diagnostic.goto_next)
 m.nmap("<leader>q", vim.diagnostic.setloclist)
 
+-- easier <C-6>
+m.nmap("<leader>n", "<C-6>")
+
 -- colemak-dh
 local l = u.layout
 l.swap("n", "h")
