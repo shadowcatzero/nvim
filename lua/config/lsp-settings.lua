@@ -8,9 +8,12 @@ local on_attach = function(_, bufnr)
         )
     end
 
-    map("gd", vim.lsp.buf.definition)
-    map("gr", vim.lsp.buf.references)
-    map("gi", vim.lsp.buf.implementation)
+    local builtin = require('telescope.builtin')
+
+    map("gd", builtin.lsp_definitions)
+    map("gr", builtin.lsp_references)
+    map("gi", builtin.lsp_implementations)
+    map("gs", builtin.lsp_document_symbols)
     map("gD", vim.lsp.buf.declaration)
 
     map("K", vim.lsp.buf.hover)

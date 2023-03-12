@@ -25,33 +25,37 @@ local config = function()
     vim.g.markdown_fenced_languages = {
         "ts=typescript"
     }
-    --require("lspconfig").denols.setup {
-    --    on_attach = on_attach,
-    --    capabilities = capabilities,
-    --}
-    require("lspconfig").clangd.setup {
+    local c = require("lspconfig")
+    c.clangd.setup {
         on_attach = on_attach,
         capabilities = capabilities,
     }
-    require("lspconfig").asm_lsp.setup {
+    c.asm_lsp.setup {
         on_attach = on_attach,
         capabilities = capabilities,
     }
-    require("lspconfig").pylsp.setup {
+    c.pylsp.setup {
         on_attach = on_attach,
         capabilities = capabilities,
     }
-    require("lspconfig").kotlin_language_server.setup {
+    c.kotlin_language_server.setup {
         on_attach = on_attach,
-        capabilities = capabilities
+        capabilities = capabilities,
     }
-    require("lspconfig").angularls.setup {
+    c.denols.setup {
         on_attach = on_attach,
-        capabilities = capabilities
+        capabilities = capabilities,
+        root_dir = c.util.root_pattern("deno.json", "deno.jsonc"),
     }
-    require("lspconfig").tsserver.setup {
+    c.angularls.setup {
         on_attach = on_attach,
-        capabilities = capabilities
+        capabilities = capabilities,
+    }
+    c.tsserver.setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        root_dir = c.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json"),
+        single_file_support = false,
     }
 end
 
