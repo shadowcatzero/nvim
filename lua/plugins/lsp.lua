@@ -57,6 +57,10 @@ local config = function()
         root_dir = c.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json"),
         single_file_support = false,
     }
+    c.jsonls.setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+    }
 end
 
 local rs_config = function()
