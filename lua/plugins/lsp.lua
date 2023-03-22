@@ -97,5 +97,11 @@ return {
         dependencies = { "nvim-lua/plenary.nvim" }
     },
     "mfussenegger/nvim-jdtls",
-    "folke/neodev.nvim"
+    "folke/neodev.nvim",
+    {
+        "lervag/vimtex",
+        config = function()
+            vim.g.vimtex_view_method = 'zathura'
+        end
+    }
 }

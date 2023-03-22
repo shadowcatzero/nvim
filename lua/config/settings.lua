@@ -8,6 +8,7 @@ o.showmode = false
 o.clipboard = "unnamedplus"
 
 g.mapleader = " "
+g.maplocalleader = ","
 vim.cmd("filetype plugin on")
 vim.cmd("syntax on")
 
