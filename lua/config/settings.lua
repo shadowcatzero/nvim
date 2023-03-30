@@ -3,7 +3,6 @@ local g = vim.g
 
 -- basic stuff
 o.number = true
-o.relativenumber = true
 o.showmode = false
 o.clipboard = "unnamedplus"
 
