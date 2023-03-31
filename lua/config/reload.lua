@@ -10,4 +10,5 @@ for _, mod in ipairs({
     "mappings",
     "utils",
     "theme",
+    "lsp-settings",
 }) do u.mod_post_write(g, "config." .. mod, u.reload) end
