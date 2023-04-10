@@ -49,6 +49,15 @@ local config = function()
     c.pylsp.setup {}
     c.kotlin_language_server.setup {}
     c.jsonls.setup {}
+    c.texlab.setup {
+        settings = {
+            texlab = {
+                build = {
+                    onSave = true
+                }
+            }
+        }
+    }
 
     require 'config.lsp-settings'
 end

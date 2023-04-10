@@ -15,10 +15,6 @@ return {
         "scalameta/nvim-metals",
         dependencies = { "nvim-lua/plenary.nvim" }
     },
-    {
-        "lervag/vimtex",
-        config = function() vim.g.vimtex_view_method = 'zathura' end
-    },
     "mfussenegger/nvim-jdtls",
     "folke/neodev.nvim",
 }
