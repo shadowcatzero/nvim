@@ -25,18 +25,6 @@ m.nmap("<leader>q", vim.diagnostic.setloclist)
 -- "alt tab"
 m.nmap("<leader>n", "<C-6>")
 
--- open zathura for current tex
--- I want to make this more generic
--- however,,,,,, I hate regex
--- and lua contains no path utils :)
-m.nmap("<leader>ot", function ()
-    local path = vim.api.nvim_buf_get_name(0)
-    io.popen("zathura "
-        ..path:match("(.*).tex")
-        ..".pdf"
-    )
-end)
-
 -- TODO: refactor so map() uses a layout file and converts
 -- colemak-dh
 local l = u.layout
