@@ -3,6 +3,7 @@ local u = require "config.utils"
 -- terminal
 local m = u.mapping
 m.map("t", "<esc>", "<C-\\><C-n>")
+m.map("t", "<tab>", "<tab>")
 m.map("t", "<C-n>", "<C-\\><C-n><C-w>h")
 m.map("t", "<C-e>", "<C-\\><C-n><C-w>j")
 m.map("t", "<C-i>", "<C-\\><C-n><C-w>k")

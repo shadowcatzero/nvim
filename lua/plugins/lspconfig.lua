@@ -28,17 +28,7 @@ local config = function()
         root_dir = c.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json"),
         single_file_support = false,
     }
-    c.omnisharp.setup {
-        cmd = { "omnisharp" },
-
-        enable_editorconfig_support = true,
-        enable_ms_build_load_projects_on_demand = false,
-        enable_roslyn_analyzers = false,
-        organize_imports_on_format = false,
-        enable_import_completion = false,
-        sdk_include_prereleases = true,
-        analyze_open_documents_only = false,
-    }
+    c.csharp_ls.setup {}
     c.typst_lsp.setup {
         cmd = { "/home/bryan/repos/typst-lsp/target/release/typst-lsp" },
     }
