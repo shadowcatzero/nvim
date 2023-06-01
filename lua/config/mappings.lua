@@ -1,14 +1,33 @@
 local u = require "config.utils"
 
+-- colemak-dh
+local h = "n"
+local j = "e"
+local k = "i"
+local l = "o"
+
 -- terminal
 local m = u.mapping
 m.map("t", "<esc>", "<C-\\><C-n>")
 m.map("t", "<tab>", "<tab>")
-m.map("t", "<C-n>", "<C-\\><C-n><C-w>h")
-m.map("t", "<C-e>", "<C-\\><C-n><C-w>j")
-m.map("t", "<C-i>", "<C-\\><C-n><C-w>k")
-m.map("t", "<C-o>", "<C-\\><C-n><C-w>l")
-m.nmap("<leader>tm", "<cmd>belowright 7sp<cr><cmd>term<cr><cmd>setlocal nonu<cr>A")
+m.map("t", "<C-"..h..">", "<C-\\><C-n><C-w>h")
+m.map("t", "<C-"..j..">", "<C-\\><C-n><C-w>j")
+m.map("t", "<C-"..k..">", "<C-\\><C-n><C-w>k")
+m.map("t", "<C-"..l..">", "<C-\\><C-n><C-w>l")
+m.nmap("<leader>tm", m.fcmds({
+    "belowright 7sp",
+    "term",
+    "setlocal nonu",
+    "setlocal scl=no"
+}))
+m.nmap("<leader>tn", m.fcmds({
+    "term",
+    "setlocal nonu",
+    "setlocal scl=no"
+}).."A")
+
+-- move window to new tab
+m.nmap("<leader>tt", "<C-W><S-T>")
 
 -- off search highlight when escape is pressed
 m.nmap("<esc>", "<cmd>noh<cr><esc>")
@@ -26,35 +45,27 @@ m.nmap("<leader>q", vim.diagnostic.setloclist)
 -- "alt tab"
 m.nmap("<leader>n", "<C-6>")
 
--- TODO: refactor so map() uses a layout file and converts
--- colemak-dh
-local l = u.layout
-l.swap("n", "h")
-l.swap("e", "j")
-l.swap("i", "k")
-l.swap("o", "l")
-l.map("e","gj")
-l.map("i","gk")
+-- layout stuff
+local lo = u.layout
+lo.swap(h, "h")
+lo.swap(j, "j")
+lo.swap(k, "k")
+lo.swap(l, "l")
+lo.map(j,"gj")
+lo.map(k,"gk")
 
-l.swap("<C-w>n", "<C-w>h")
-l.swap("<C-w>e", "<C-w>j")
-l.swap("<C-w>i", "<C-w>k")
-l.swap("<C-w>o", "<C-w>l")
-l.swap("<C-w>N", "<C-w>H")
-l.swap("<C-w>E", "<C-w>J")
-l.swap("<C-w>I", "<C-w>K")
-l.swap("<C-w>O", "<C-w>L")
+lo.swap(h:upper(), "H")
+lo.swap(l:upper(), "L")
 
-l.swap("N", "H")
-l.swap("O", "L")
+-- moving between windows
+lo.map("<C-"..h..">", "<C-w>h")
+lo.map("<C-"..j..">", "<C-w>j")
+lo.map("<C-"..k..">", "<C-w>k")
+lo.map("<C-"..l..">", "<C-w>l")
 
-l.map("<C-n>", "<C-w>h")
-l.map("<C-e>", "<C-w>j")
-l.map("<C-i>", "<C-w>k")
-l.map("<C-o>", "<C-w>l")
-
-l.map("<C-,>", "<cmd>vert res -1<CR>")
-l.map("<C-.>", "<cmd>vert res +1<CR>")
+-- window resizing
+lo.cmd("<C-,>", "res -1")
+lo.cmd("<C-.>", "res +1")
 
 -- ascension
 m.map("x","<leader>p", "\"_dp")

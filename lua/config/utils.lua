@@ -4,8 +4,15 @@ local opts = { noremap = true, silent = true }
 local mapping = {}
 mapping.map = function(mode, from, to) vim.keymap.set(mode, from, to, opts) end
 mapping.nmap = function(from, to) vim.keymap.set("n", from, to, opts) end
+mapping.fcmds = function(cmds)
+    local str = ""
+    for i,c in pairs(cmds) do
+        str = str.."<cmd>"..c.."<cr>"
+    end
+    return str
+end
 mapping.cmd = function(from, content)
-    vim.keymap.set("n", from, "<cmd>" .. content .. "<cr>", opts)
+    vim.keymap.set("n", from, mapping.fcmds({content}), opts)
 end
 
 -- layout (mapping)
@@ -13,6 +20,9 @@ local layout = {}
 layout.map = function(from, to)
     vim.keymap.set("n", from, to, opts)
     vim.keymap.set("x", from, to, opts)
+end
+layout.cmd = function(from, content)
+    layout.map(from, mapping.fcmds({content}))
 end
 layout.swap = function(a, b)
     layout.map(a, b)
