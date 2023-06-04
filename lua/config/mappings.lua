@@ -72,6 +72,6 @@ lo.map("<C-"..l..">", "<C-w>l")
 lo.cmd("<C-,>", "res -1")
 lo.cmd("<C-.>", "res +1")
 
--- ascension
-m.map("x","<leader>p", "\"_dp")
+-- ascension (in <leader>p <leader>p, paste without replacing clipboard)
+m.map("x","<leader>p", "\"_dhp")
 
