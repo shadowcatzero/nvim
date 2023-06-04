@@ -15,6 +15,10 @@ return {
         "scalameta/nvim-metals",
         dependencies = { "nvim-lua/plenary.nvim" }
     },
+    {
+        "numToStr/Comment.nvim",
+        config = function() require "Comment".setup{} end
+    },
     "mfussenegger/nvim-jdtls",
     "folke/neodev.nvim",
 }

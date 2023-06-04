@@ -4,7 +4,6 @@ local g = vim.g
 -- basic stuff
 o.number = true
 o.showmode = false
-o.clipboard = "unnamedplus"
 
 g.mapleader = " "
 g.maplocalleader = ","
