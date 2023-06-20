@@ -8,10 +8,6 @@ local l = "o"
 
 local m = u.mapping
 
--- terminal copy paste
-m.map("v", "<C-c>", '"+y')
-m.map("i", "<C-v>", '<esc>"+p`]a')
-
 -- terminal
 m.map("t", "<esc>", "<C-\\><C-n>")
 m.map("t", "<tab>", "<tab>")

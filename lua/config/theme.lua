@@ -9,22 +9,15 @@ end
 hl("ExtraWhitespace", { ctermbg = "red", bg = "#ff8888" })
 vim.cmd [[match ExtraWhitespace /\s\+$/]]
 
-local bg =  "#201918"
+-- make background partially transparent
 
--- make background transparent
+-- local bg =  "#1e1e2e"
+-- local bg2 =  "#181825"
+
 -- gbhl("Normal", "none")
--- gbhl("EndOfBuffer", "none")
--- gbhl("SignColumn", "none")
--- gbhl("NeoTreeEndOfBuffer", "none")
+-- gbhl("NormalNC", "none")
+-- gbhl("MsgArea", bg)
+-- gbhl("NeoTreeNormal", bg)
+-- gbhl("NeoTreeNormalNC", bg)
+-- hl("VertSplit", { bg = bg2, fg = bg2 })
 
---[=[
-for _, name in ipairs({
-    "NeoTreeNormal",
-    "NeoTreeNormalNC",
-    "MsgArea",
-    "lualine_a_command",
-    "lualine_a_inactive",
-    "lualine_b_inactive",
-    "lualine_c_inactive",
-}) do gbhl(name, bg) end
-]=]--

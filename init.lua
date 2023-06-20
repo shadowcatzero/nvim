@@ -4,4 +4,5 @@ for _, name in ipairs({
     "mappings",
     "plugins",
     "theme",
+    "filetype",
 }) do require("config." .. name) end

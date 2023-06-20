@@ -11,4 +11,5 @@ for _, mod in ipairs({
     "utils",
     "theme",
     "lsp-settings",
+    "filetype",
 }) do u.mod_post_write(g, "config." .. mod, u.reload) end

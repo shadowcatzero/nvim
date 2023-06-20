@@ -4,11 +4,13 @@ local g = vim.g
 -- basic stuff
 o.number = true
 o.showmode = false
+o.clipboard = "unnamedplus"
 
 g.mapleader = " "
 g.maplocalleader = ","
 vim.cmd("filetype plugin on")
 vim.cmd("syntax on")
+o.guifont = "Comic\\ Code\\ Ligatures"
 
 -- line break (wrapping) settings
 o.linebreak = true
@@ -40,3 +42,8 @@ end
 vim.diagnostic.config({
     virtual_text = { prefix = "●" },
 })
+
+-- neovide
+if vim.g.neovide then
+
+end

@@ -11,6 +11,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         end
 
         local builtin = require('telescope.builtin')
+        local dap = require('dap')
 
         map("gd", builtin.lsp_definitions)
         map("gr", builtin.lsp_references)
@@ -28,9 +29,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
         end)
         map("<leader>D", vim.lsp.buf.type_definition)
         map("<leader>rn", vim.lsp.buf.rename)
-        map("<leader>ca", vim.lsp.buf.code_action)
+        map("<leader>a", vim.lsp.buf.code_action)
         map("<leader>fm", function()
             vim.lsp.buf.format { async = true }
         end)
+        map("<leader>da", dap.toggle_breakpoint)
+        map("<leader>dc", dap.continue)
+        map("<leader>ds", dap.step_into)
     end
 })
