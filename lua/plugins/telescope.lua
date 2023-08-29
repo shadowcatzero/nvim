@@ -12,6 +12,9 @@ return {
             u.cmd("<leader>fg", "Telescope live_grep")
             u.cmd("<leader>fb", "Telescope buffers")
             u.cmd("<leader>fh", "Telescope help_tags")
+            u.cmd("<leader>fd", "Telescope diagnostics")
+            u.cmd("<leader>fs", "Telescope lsp_document_symbols")
+            u.cmd("<leader>fS", "Telescope lsp_workspace_symbols")
         end
     },
     {

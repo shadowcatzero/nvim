@@ -1,13 +1,14 @@
 return {
     {
         "nvim-neorg/neorg",
-        tag = "0.0.12",
+        build = ":Neorg sync-parsers",
+        dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
             require("neorg").setup {
                 load = {
                     ["core.defaults"] = {},
-                    ["core.norg.concealer"] = {},
-                    ["core.norg.completion"] = {
+                    ["core.concealer"] = {},
+                    ["core.completion"] = {
                         config = {
                             engine = "nvim-cmp"
                         }
@@ -16,8 +17,6 @@ return {
                 }
             }
         end,
-        dependencies = { "nvim-lua/plenary.nvim" },
-        build = ":Neorg sync-parsers"
     },
     {
         "folke/which-key.nvim",
