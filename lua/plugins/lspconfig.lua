@@ -49,6 +49,7 @@ local config = function()
         }
     }
     c.wgsl_analyzer.setup {}
+    c.hls.setup {}
 
     require 'config.lsp-settings'
 end
