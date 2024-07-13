@@ -5,6 +5,7 @@ local g = vim.g
 o.number = true
 o.showmode = false
 o.clipboard = "unnamedplus"
+o.undofile = true
 
 g.mapleader = " "
 g.maplocalleader = ","
@@ -33,17 +34,30 @@ else
 end
 
 -- diagnostics
-local signs = { Error = " ", Warn = " ", Hint = "", Info = " " }
-for type, icon in pairs(signs) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
-
+local sev = vim.diagnostic.severity
+local text = {
+    [sev.ERROR] = " ",
+    [sev.WARN] = " ",
+    [sev.HINT] = "",
+    [sev.INFO] = " ",
+}
+local hl = {
+    [sev.ERROR] = "DiagnosticSignError",
+    [sev.WARN] = "DiagnosticSignWarn",
+    [sev.HINT] = "DiagnosticSignHint",
+    [sev.INFO] = "DiagnosticSignInfo",
+}
 vim.diagnostic.config({
     virtual_text = { prefix = "●" },
+    signs = {
+        text = text,
+        numhl = hl,
+    },
 })
 
 -- neovide
 if vim.g.neovide then
-
+    vim.g.transparency = 0.8
+    vim.g.neovide_transparency = 0.8
+    vim.g.neovide_background_color = "#1e1e2a"
 end

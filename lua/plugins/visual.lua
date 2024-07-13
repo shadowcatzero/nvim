@@ -32,9 +32,7 @@ return {
     {
         "lewis6991/gitsigns.nvim",
         config = function()
-            require("gitsigns").setup({
-                _signs_staged_enable = true
-            })
+            require("gitsigns").setup()
         end
     },
     {
@@ -74,9 +72,11 @@ return {
                         lookahead = true,
                         keymaps = {
                             ["af"] = "@function.outer",
-                            ["if"] = "@function.inner",
+                            ["kf"] = "@function.inner",
                             ["ac"] = "@class.outer",
-                            ["ic"] = "@class.inner",
+                            ["kc"] = "@class.inner",
+                            ["ap"] = "@parameter.outer",
+                            ["kp"] = "@parameter.inner",
                         },
                     },
                     swap = {
@@ -88,7 +88,6 @@ return {
                             ["<leader>sn"] = "@parameter.inner",
                         },
                     },
-
                 },
             }
         end

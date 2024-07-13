@@ -1,23 +1,22 @@
 return {
-    {
-        "nvim-neorg/neorg",
-        build = ":Neorg sync-parsers",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        config = function()
-            require("neorg").setup {
-                load = {
-                    ["core.defaults"] = {},
-                    ["core.concealer"] = {},
-                    ["core.completion"] = {
-                        config = {
-                            engine = "nvim-cmp"
-                        }
-                    },
-                    ["core.export"] = {},
-                }
-            }
-        end,
-    },
+    -- {
+    --     "nvim-neorg/neorg",
+    --     dependencies = { "nvim-lua/plenary.nvim" },
+    --     config = function()
+    --         require("neorg").setup {
+    --             load = {
+    --                 ["core.defaults"] = {},
+    --                 ["core.concealer"] = {},
+    --                 ["core.completion"] = {
+    --                     config = {
+    --                         engine = "nvim-cmp"
+    --                     }
+    --                 },
+    --                 ["core.export"] = {},
+    --             }
+    --         }
+    --     end,
+    -- },
     {
         "folke/which-key.nvim",
         config = function()

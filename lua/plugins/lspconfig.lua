@@ -50,6 +50,7 @@ local config = function()
     }
     c.wgsl_analyzer.setup {}
     c.hls.setup {}
+    c.slint_lsp.setup {}
 
     require 'config.lsp-settings'
 end
@@ -57,6 +58,7 @@ end
 return {
     {
         "neovim/nvim-lspconfig",
-        config = config
+        config = config,
+        dependencies = { "williamboman/mason-lspconfig.nvim"},
     },
 }
