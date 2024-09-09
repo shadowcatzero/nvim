@@ -11,21 +11,35 @@ local m = u.mapping
 -- terminal
 m.map("t", "<esc>", "<C-\\><C-n>")
 m.map("t", "<tab>", "<tab>")
-m.map("t", "<C-"..h..">", "<C-\\><C-n><C-w>h")
-m.map("t", "<C-"..j..">", "<C-\\><C-n><C-w>j")
-m.map("t", "<C-"..k..">", "<C-\\><C-n><C-w>k")
-m.map("t", "<C-"..l..">", "<C-\\><C-n><C-w>l")
+m.map("t", "<C-" .. h .. ">", "<C-\\><C-n><C-w>h")
+m.map("t", "<C-" .. j .. ">", "<C-\\><C-n><C-w>j")
+m.map("t", "<C-" .. k .. ">", "<C-\\><C-n><C-w>k")
+m.map("t", "<C-" .. l .. ">", "<C-\\><C-n><C-w>l")
 m.nmap("<leader>tm", m.fcmds({
     "belowright 7sp",
     "term",
     "setlocal nonu",
-    "setlocal scl=no"
+    "setlocal scl=no",
 }))
-m.nmap("<leader>tn", m.fcmds({
-    "term",
-    "setlocal nonu",
-    "setlocal scl=no"
-}).."A")
+local prev_buf = ""
+m.nmap("<leader>tn", function()
+    if(vim.fn.bufname("terminal") == "") then
+        prev_buf = vim.fn.getreg("#")
+        vim.cmd("term")
+        vim.cmd("setlocal nonu")
+        vim.cmd("setlocal scl=no")
+        vim.cmd("keepalt file terminal")
+        vim.fn.feedkeys("A")
+    else
+        if(vim.fn.bufname() == "terminal") then
+            vim.cmd("b #")
+            vim.fn.setreg("#", prev_buf)
+        else
+            prev_buf = vim.fn.getreg("#")
+            vim.cmd("b terminal")
+        end
+    end
+end)
 
 -- move window to new tab
 m.nmap("<leader>tt", "<C-W><S-T>")
@@ -52,26 +66,25 @@ lo.swap(h, "h")
 lo.swap(j, "j")
 lo.swap(k, "k")
 lo.swap(l, "l")
-lo.map(j,"gj")
-lo.map(k,"gk")
+lo.map(j, "gj")
+lo.map(k, "gk")
 
 lo.swap(h:upper(), "H")
 lo.swap(l:upper(), "L")
 
 -- moving between windows
-lo.map("<C-"..h..">", "<C-w>h")
-lo.map("<C-"..j..">", "<C-w>j")
-lo.map("<C-"..k..">", "<C-w>k")
-lo.map("<C-"..l..">", "<C-w>l")
+lo.map("<C-" .. h .. ">", "<C-w>h")
+lo.map("<C-" .. j .. ">", "<C-w>j")
+lo.map("<C-" .. k .. ">", "<C-w>k")
+lo.map("<C-" .. l .. ">", "<C-w>l")
 
 -- window resizing
 lo.cmd("<C-,>", "res -1")
 lo.cmd("<C-.>", "res +1")
 
 -- ascension (paste without replacing clipboard)
-m.map("x","<leader>p", "\"_dhp")
+m.map("x", "<leader>p", "\"_dhp")
 
 -- keep centered while moving around
 m.nmap("<C-u>", "<C-u>zz")
 m.nmap("<C-d>", "<C-d>zz")
-
