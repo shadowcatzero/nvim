@@ -24,14 +24,11 @@ local config = function()
     c.denols.setup {
         root_dir = c.util.root_pattern("deno.json", "deno.jsonc"),
     }
-    c.tsserver.setup {
+    c.ts_ls.setup {
         root_dir = c.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json"),
         single_file_support = false,
     }
     c.csharp_ls.setup {}
-    c.typst_lsp.setup {
-        cmd = { "/home/bryan/repos/typst-lsp/target/release/typst-lsp" },
-    }
 
     c.angularls.setup {}
     c.clangd.setup {}
@@ -51,6 +48,9 @@ local config = function()
     c.wgsl_analyzer.setup {}
     c.hls.setup {}
     c.slint_lsp.setup {}
+
+    require('mason').setup()
+    require('mason-lspconfig').setup()
 
     require 'config.lsp-settings'
 end

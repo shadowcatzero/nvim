@@ -22,7 +22,7 @@ m.nmap("<leader>tm", m.fcmds({
     "setlocal scl=no",
 }))
 local prev_buf = ""
-m.nmap("<leader>tn", function()
+m.nmap("<leader>i", function()
     if(vim.fn.bufname("terminal") == "") then
         prev_buf = vim.fn.getreg("#")
         vim.cmd("term")
@@ -33,10 +33,13 @@ m.nmap("<leader>tn", function()
     else
         if(vim.fn.bufname() == "terminal") then
             vim.cmd("b #")
-            vim.fn.setreg("#", prev_buf)
+            if (string.len(prev_buf) ~= 0) then
+                vim.fn.setreg("#", prev_buf)
+            end
         else
             prev_buf = vim.fn.getreg("#")
             vim.cmd("b terminal")
+            vim.fn.feedkeys("A")
         end
     end
 end)
