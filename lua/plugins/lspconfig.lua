@@ -35,11 +35,11 @@ local config = function()
     c.asm_lsp.setup {}
     c.pylsp.setup {}
     c.kotlin_language_server.setup {}
-    c.jsonls.setup {}
     c.texlab.setup {
         settings = {
             texlab = {
                 build = {
+                    args = { "-xelatex", "-interaction=nonstopmode", "-synctex=1", "%f", "-outdir=build" },
                     onSave = true
                 }
             }
@@ -48,6 +48,13 @@ local config = function()
     c.wgsl_analyzer.setup {}
     c.hls.setup {}
     c.slint_lsp.setup {}
+    c.tinymist.setup {
+        root_dir = "-",
+        settings = {
+            exportPdf = "onSave",
+            formatterMode = "typstyle",
+        }
+    }
 
     require('mason').setup()
     require('mason-lspconfig').setup()
