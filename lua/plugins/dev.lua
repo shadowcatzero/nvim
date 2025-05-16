@@ -2,6 +2,7 @@ return {
     {
         "mrcjkb/rustaceanvim",
         ft = { "rust" },
+        lazy = false,
     },
     {
         "windwp/nvim-autopairs",
