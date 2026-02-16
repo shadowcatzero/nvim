@@ -1,10 +1,10 @@
 return {
-    -- {
-    --     "mrcjkb/rustaceanvim",
-    --     ft = { "rust" },
-    --     version = '^7',
-    --     lazy = false,
-    -- },
+    {
+        "mrcjkb/rustaceanvim",
+        ft = { "rust" },
+        version = '^7',
+        lazy = false,
+    },
     {
         "windwp/nvim-autopairs",
         config = function() require "nvim-autopairs".setup {} end

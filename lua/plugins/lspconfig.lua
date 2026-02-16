@@ -1,9 +1,10 @@
 local config = function()
+    local lsp = vim.lsp
     vim.g.markdown_fenced_languages = {
         "ts=typescript"
     }
 
-    vim.lsp.config("lua_ls", {
+    lsp.config["lua_ls"] = {
         settings = {
             Lua = {
                 diagnostics = {
@@ -18,17 +19,16 @@ local config = function()
                 },
             },
         },
-    })
-    vim.lsp.enable("denols")
-    vim.lsp.enable("csharp_ls")
-    vim.lsp.enable("rust_analyzer")
+    }
+    lsp.enable("denols")
+    lsp.enable("csharp_ls")
 
-    vim.lsp.enable("angularls")
-    vim.lsp.enable("clangd")
-    vim.lsp.enable("asm_lsp")
-    vim.lsp.enable("pylsp")
-    vim.lsp.enable("kotlin_language_server")
-    vim.lsp.config("texlab", {
+    lsp.enable("angularls")
+    lsp.enable("clangd")
+    lsp.enable("asm_lsp")
+    lsp.enable("pylsp")
+    lsp.enable("kotlin_language_server")
+    lsp.config["texlab"] = {
         settings = {
             texlab = {
                 build = {
@@ -37,17 +37,21 @@ local config = function()
                 }
             }
         }
-    })
-    vim.lsp.enable("wgsl_analyzer")
-    vim.lsp.enable("hls")
-    vim.lsp.enable("slint_lsp")
-    vim.lsp.config("tinymist", {
+    }
+    lsp.enable("wgsl_analyzer")
+    lsp.enable("hls")
+    lsp.enable("slint_lsp")
+    lsp.config["tinymist"] = {}
+    lsp.config["wgsl_analyzer"] = {}
+    lsp.config["hls"] = {}
+    lsp.config["slint_lsp"] = {}
+    lsp.config["tinymist"] = {
         root_dir = "-",
         settings = {
             exportPdf = "onSave",
             formatterMode = "typstyle",
         }
-    })
+    }
 
     require('mason').setup()
     require('mason-lspconfig').setup()

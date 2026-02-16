@@ -86,7 +86,7 @@ lo.cmd("<C-,>", "res -1")
 lo.cmd("<C-.>", "res +1")
 
 -- ascension (paste without replacing clipboard)
-m.map("x", "<leader>p", "\"_dhp")
+m.map("x", "<leader>p", "\"_dP")
 
 -- keep centered while moving around
 m.nmap("<C-u>", "<C-u>zz")
